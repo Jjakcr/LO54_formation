@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 22, 2016 11:35:14 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="fr.utbm.formation.entity.CourseSession" optimistic-lock="version" schema="FORMATION" table="COURSE_SESSION">
+    <id name="idSession" type="int">
+      <column name="ID_SESSION" precision="8" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="startDate" type="date">
+      <column length="10" name="START_DATE" not-null="true"/>
+    </property>
+    <property name="endDate" type="date">
+      <column length="10" name="END_DATE" not-null="true"/>
+    </property>
+    <property name="courseCode" type="string">
+      <column length="16" name="COURSE_CODE"/>
+    </property>
+    <property name="locationId" type="java.lang.Integer">
+      <column name="LOCATION_ID" precision="8" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

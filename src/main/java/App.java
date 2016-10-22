@@ -1,6 +1,6 @@
 
 
-import fr.utbm.entity.Actor;
+
 import fr.utbm.tools.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -13,7 +13,7 @@ import java.util.List;
 public class App {
 
 	public static void main(String[] args) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		/*Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
                 
 		// Sélection des températures
@@ -22,6 +22,6 @@ public class App {
           
 		session.getTransaction().commit();
 		session.close();
-                System.exit(0);
+                System.exit(0);*/
 	}
 }
