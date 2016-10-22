@@ -14,7 +14,7 @@ public class App {
 
 	public static void main(String[] args) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-                /*session.beginTransaction();
+		/*session.beginTransaction();
                 
 		// Sélection des températures
 		/*Query q = session.createQuery("from Actor");
