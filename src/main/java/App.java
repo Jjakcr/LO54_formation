@@ -1,7 +1,7 @@
 
 
 
-import fr.utbm.tools.HibernateUtil;
+import fr.utbm.formation.core.tools.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -13,15 +13,15 @@ import java.util.List;
 public class App {
 
 	public static void main(String[] args) {
-		/*Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
+		Session session = HibernateUtil.getSessionFactory().openSession();
+                /*session.beginTransaction();
                 
 		// Sélection des températures
-		Query q = session.createQuery("from Actor");
-		List<Actor> actors = q.list();
+		/*Query q = session.createQuery("from Actor");
+		List<Actor> actors = q.list();*/
           
-		session.getTransaction().commit();
+		//session.getTransaction().commit();
 		session.close();
-                System.exit(0);*/
+                System.exit(0);
 	}
 }

@@ -1,4 +1,4 @@
-package fr.utbm.formation.entity;
+package fr.utbm.formation.core.entity;
 // Generated Oct 22, 2016 11:35:14 AM by Hibernate Tools 4.3.1
 
 

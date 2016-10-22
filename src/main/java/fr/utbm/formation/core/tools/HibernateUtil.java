@@ -1,4 +1,4 @@
-package fr.utbm.tools;
+package fr.utbm.formation.core.tools;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
