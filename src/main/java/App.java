@@ -1,11 +1,8 @@
 
 
 
-import fr.utbm.formation.core.tools.HibernateUtil;
-import org.hibernate.Query;
-import org.hibernate.Session;
-
-import java.util.List;
+import fr.utbm.formation.core.entity.Course;
+import fr.utbm.formation.core.service.ServiceFormation;
 
 /**
  * Hello world!
@@ -13,15 +10,9 @@ import java.util.List;
 public class App {
 
 	public static void main(String[] args) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		/*session.beginTransaction();
-                
-		// Sélection des températures
-		/*Query q = session.createQuery("from Actor");
-		List<Actor> actors = q.list();*/
-          
-		//session.getTransaction().commit();
-		session.close();
-                System.exit(0);
+		Course c = new Course("testcode","testtitle"); 
+                ServiceFormation service= new ServiceFormation();
+                service.registerCourse(c); //sauvegarde d'un nouveau cours dans la bdd
+                service.filterFormation(1, "test"); //recherche dans la bdd table course avec filtre
 	}
 }
