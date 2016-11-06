@@ -41,13 +41,20 @@ public class CourseDAO {
         }
         System.out.print("Formation Crée");
     }
+    
+    public boolean isExist(String crit){
+       String hql = "FROM Course where CODE='"+crit+"'";
+        Query query = session.createQuery(hql); //methode HQL
+        List result= query.list();
+        return !result.isEmpty();
+    }
 
     public void searchCourse(String filtre) {
 
         try {
             tx = session.beginTransaction();
             String hql = "FROM Course where TITLE LIKE '%" + filtre + "%'";
-            Query query = session.createQuery(hql);
+            Query query = session.createQuery(hql); //methode HQL
             List result = query.list();
             for (Iterator iterator = result.iterator(); iterator.hasNext();) {
                 Course c = (Course) iterator.next();

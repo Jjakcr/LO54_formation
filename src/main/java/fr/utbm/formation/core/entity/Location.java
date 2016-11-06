@@ -15,8 +15,8 @@ public class Location  implements java.io.Serializable {
     public Location() {
     }
 
-    public Location(int id, String city) {
-       this.id = id;
+    public Location(String city) {
+     
        this.city = city;
     }
    
@@ -34,7 +34,7 @@ public class Location  implements java.io.Serializable {
     public void setCity(String city) {
         this.city = city;
     }
-
+    
 
 
 

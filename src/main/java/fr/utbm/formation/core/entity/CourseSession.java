@@ -32,6 +32,14 @@ public class CourseSession  implements java.io.Serializable {
        this.courseCode = courseCode;
        this.locationId = locationId;
     }
+    
+     public CourseSession(Date startDate, Date endDate, String courseCode, Integer locationId) {
+       
+       this.startDate = startDate;
+       this.endDate = endDate;
+       this.courseCode = courseCode;
+       this.locationId = locationId;
+    }
    
     public int getIdSession() {
         return this.idSession;
@@ -68,8 +76,6 @@ public class CourseSession  implements java.io.Serializable {
     public void setLocationId(Integer locationId) {
         this.locationId = locationId;
     }
-
-
 
 
 }

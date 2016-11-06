@@ -5,7 +5,7 @@
   <class name="fr.utbm.formation.core.entity.CourseSession" optimistic-lock="version" schema="FORMATION" table="COURSE_SESSION">
     <id name="idSession" type="int">
       <column name="ID_SESSION" precision="8" scale="0"/>
-      <generator class="assigned"/>
+      <generator class="increment"/>
     </id>
     <property name="startDate" type="date">
       <column length="10" name="START_DATE" not-null="true"/>
