@@ -7,6 +7,7 @@ package fr.utbm.formation.core.repository;
 
 import fr.utbm.formation.core.entity.Location;
 import fr.utbm.formation.core.tools.HibernateUtil;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -45,5 +46,16 @@ public class LocationDAO {
         Query query = session.createQuery(hql); //methode HQL
         List result= query.list();
         return !result.isEmpty();
+    }
+     
+    public void searchLocation( String loc){
+        String hql = "FROM Location where City ="+loc;
+        Query query = session.createQuery(hql);
+        List result = query.list();
+          for (Iterator iterator = result.iterator(); iterator.hasNext();) {
+            Location lc = (Location) iterator.next();
+                System.out.println("Ville : " + lc.getCity());
+                
+        }
     }
 }

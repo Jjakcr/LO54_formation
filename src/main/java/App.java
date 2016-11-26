@@ -22,7 +22,8 @@ public class App {
 
         stDate = formatter.parse("11/11/2016");
         edDate = formatter.parse("16/11/2016");
-
+        
+        
         CourseSession cs = new CourseSession(stDate, edDate, "testcode", 1);
         ServiceFormation service = new ServiceFormation();
         service.registerCourse(c, cs, loc); //sauvegarde d'un nouveau cours dans la bdd

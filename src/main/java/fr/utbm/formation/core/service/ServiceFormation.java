@@ -46,6 +46,9 @@ public class ServiceFormation {
                 break;
 
             case 3:
+                LocationDAO loc= new LocationDAO();
+                loc.searchLocation(filtre);
+                break;
         }
 
     }
