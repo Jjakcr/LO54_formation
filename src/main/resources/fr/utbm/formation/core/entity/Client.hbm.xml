@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 22, 2016 11:35:14 AM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 nov. 2016 11:34:33 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class name="fr.utbm.formation.core.entity.Client" optimistic-lock="version" schema="FORMATION" table="CLIENT">
-    <id name="idClient" type="int">
-      <column name="ID_CLIENT" precision="8" scale="0"/>
-      <generator class="assigned"/>
-    </id>
-    <property name="lastname" type="string">
-      <column length="50" name="LASTNAME" not-null="true"/>
-    </property>
-    <property name="firstname" type="string">
-      <column length="50" name="FIRSTNAME" not-null="true"/>
-    </property>
-    <property name="address" type="string">
-      <column length="150" name="ADDRESS" not-null="true"/>
-    </property>
-    <property name="phone" type="long">
-      <column name="PHONE" not-null="true" precision="15" scale="0"/>
-    </property>
-    <property name="email" type="string">
-      <column length="150" name="EMAIL" not-null="true"/>
-    </property>
-    <property name="courseSessionId" type="java.lang.Integer">
-      <column name="COURSE_SESSION_ID" precision="8" scale="0"/>
-    </property>
-  </class>
+    <class name="fr.utbm.formation.core.entity.Client" table="CLIENT" schema="FORMATION" optimistic-lock="version">
+        <id name="idClient" type="int">
+            <column name="ID_CLIENT" />
+            <generator class="increment"/>
+        </id>
+        <property name="lastname" type="string">
+            <column name="LASTNAME" length="50" not-null="true" />
+        </property>
+        <property name="firstname" type="string">
+            <column name="FIRSTNAME" length="50" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="ADDRESS" length="150" not-null="true" />
+        </property>
+        <property name="phone" type="long">
+            <column name="PHONE" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="150" not-null="true" />
+        </property>
+    
+        <many-to-one name="CourseSession" class="fr.utbm.formation.core.entity.Client" column="COURSE_SESSION_ID" lazy="false" fetch="join" />
+    </class>
 </hibernate-mapping>

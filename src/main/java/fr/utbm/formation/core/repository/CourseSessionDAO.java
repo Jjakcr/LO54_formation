@@ -63,8 +63,11 @@ public class CourseSessionDAO {
         List result = crit.list();
         for (Iterator iterator = result.iterator(); iterator.hasNext();) {
             CourseSession cs = (CourseSession) iterator.next();
+            
                 System.out.print("ID: " + cs.getIdSession());
+                System.out.println("titre :"+cs.getCourse().getTitle());
                 System.out.println(" Date debut :" + cs.getStartDate());
+                System.out.println("lieux :"+cs.getLocation());
         }
 
     }

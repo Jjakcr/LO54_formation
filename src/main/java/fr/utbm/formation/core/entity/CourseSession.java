@@ -1,5 +1,5 @@
 package fr.utbm.formation.core.entity;
-// Generated Oct 22, 2016 11:35:14 AM by Hibernate Tools 4.3.1
+// Generated 26 nov. 2016 11:34:32 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -13,8 +13,24 @@ public class CourseSession  implements java.io.Serializable {
      private int idSession;
      private Date startDate;
      private Date endDate;
-     private String courseCode;
-     private Integer locationId;
+     private Course course;
+     private Location location;
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
     public CourseSession() {
     }
@@ -29,16 +45,8 @@ public class CourseSession  implements java.io.Serializable {
        this.idSession = idSession;
        this.startDate = startDate;
        this.endDate = endDate;
-       this.courseCode = courseCode;
-       this.locationId = locationId;
-    }
-    
-     public CourseSession(Date startDate, Date endDate, String courseCode, Integer locationId) {
-       
-       this.startDate = startDate;
-       this.endDate = endDate;
-       this.courseCode = courseCode;
-       this.locationId = locationId;
+       this.course = course;
+       this.location = location;
     }
    
     public int getIdSession() {
@@ -62,20 +70,9 @@ public class CourseSession  implements java.io.Serializable {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-    public String getCourseCode() {
-        return this.courseCode;
-    }
-    
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;
-    }
-    public Integer getLocationId() {
-        return this.locationId;
-    }
-    
-    public void setLocationId(Integer locationId) {
-        this.locationId = locationId;
-    }
+   
+
+
 
 
 }

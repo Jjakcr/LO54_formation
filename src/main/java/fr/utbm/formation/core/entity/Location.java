@@ -1,5 +1,5 @@
 package fr.utbm.formation.core.entity;
-// Generated Oct 22, 2016 11:35:14 AM by Hibernate Tools 4.3.1
+// Generated 26 nov. 2016 11:34:32 by Hibernate Tools 4.3.1
 
 
 
@@ -15,8 +15,8 @@ public class Location  implements java.io.Serializable {
     public Location() {
     }
 
-    public Location(String city) {
-     
+    public Location(int id, String city) {
+       this.id = id;
        this.city = city;
     }
    
@@ -34,7 +34,7 @@ public class Location  implements java.io.Serializable {
     public void setCity(String city) {
         this.city = city;
     }
-    
+
 
 
 

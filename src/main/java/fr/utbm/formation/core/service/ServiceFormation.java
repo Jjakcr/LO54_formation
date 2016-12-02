@@ -64,10 +64,17 @@ public class ServiceFormation {
            lc.addLocation(loc);
         }
         
-        if(!cs.getCourseCode().isEmpty() && !csS.isExist(cs.getIdSession())){
+        if(!csS.isExist(cs.getIdSession())){
            csS.addCourseSession(cs);
         }
         
     }
+    
+    public void getAllFormation(){
+        CourseDAO formation = new CourseDAO();
+        CourseSessionDAO csS = new CourseSessionDAO();
+        LocationDAO lc = new LocationDAO();
+        formation.getAllCourse();
+}
     
 }

@@ -12,10 +12,9 @@
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     <property name="hbm2ddl.auto">update</property>
-    
+    <mapping resource="fr/utbm/formation/core/entity/Location.hbm.xml"/>
     <mapping resource="fr/utbm/formation/core/entity/Client.hbm.xml"/>
     <mapping resource="fr/utbm/formation/core/entity/CourseSession.hbm.xml"/>
-    <mapping resource="fr/utbm/formation/core/entity/Location.hbm.xml"/>
     <mapping resource="fr/utbm/formation/core/entity/Course.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
