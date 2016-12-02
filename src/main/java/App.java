@@ -24,7 +24,7 @@ public class App {
         edDate = formatter.parse("16/11/2016");
         
         
-       // CourseSession cs = new CourseSession(stDate, edDate, "testcode", 1);
+      // CourseSession cs = new CourseSession(stDate, edDate, "testcode", 1);
         ServiceFormation service = new ServiceFormation();
         //service.registerCourse(c, cs, loc); //sauvegarde d'un nouveau cours dans la bdd
         service.filterFormation(1, "test"); //recherche dans la bdd table course avec filtre
