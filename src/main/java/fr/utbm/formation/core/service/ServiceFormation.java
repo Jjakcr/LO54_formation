@@ -53,21 +53,20 @@ public class ServiceFormation {
 
     }
 
-    public void registerCourse(Course f,CourseSession cs, Location loc) {
+    public void registerCourse(Course f, Location loc) {
         CourseDAO formation = new CourseDAO();
-        CourseSessionDAO csS = new CourseSessionDAO();
         LocationDAO lc = new LocationDAO();
         if (!formation.isExist(f.getCode())){
         formation.addCourse(f);
         }
         if(!loc.getCity().isEmpty() && !lc.isExist(loc.getId())){
            lc.addLocation(loc);
-        }
-        
-        if(!csS.isExist(cs.getIdSession())){
-           csS.addCourseSession(cs);
-        }
-        
+        }      
+    }
+    
+    public void resgisterCourseSession(CourseSession csS){
+        CourseSessionDAO csSD= new CourseSessionDAO();
+        csSD.addCourseSession(csS);
     }
     
     public void getAllFormation(){

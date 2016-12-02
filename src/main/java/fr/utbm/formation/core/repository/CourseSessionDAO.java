@@ -37,7 +37,8 @@ public class CourseSessionDAO {
     }
 
     public void addCourseSession(CourseSession cs) {
-
+        
+        
         try {
 
             tx = session.beginTransaction();
@@ -64,10 +65,10 @@ public class CourseSessionDAO {
         for (Iterator iterator = result.iterator(); iterator.hasNext();) {
             CourseSession cs = (CourseSession) iterator.next();
             
-                System.out.print("ID: " + cs.getIdSession());
-                System.out.println("titre :"+cs.getCourse().getTitle());
+                System.out.println("ID: " + cs.getIdSession());
+                System.out.println("titre :"+ cs.getCourse().getTitle());
                 System.out.println(" Date debut :" + cs.getStartDate());
-                System.out.println("lieux :"+cs.getLocation());
+                System.out.println("lieux :" + cs.getLocation().getCity());
         }
 
     }
