@@ -17,16 +17,29 @@
     </head>
     <body>
         <h1>test!</h1>
-        <%
-           ServiceFormation service= new ServiceFormation();
-           List result = service.getAllFormation();
-           for (Iterator iterator = result.iterator(); iterator.hasNext();) {
-                Course c = (Course) iterator.next();
-                out.print("Code: " + c.getCode());
-                out.print("Title :" + c.getTitle());
-            } 
-                  
-             %>
-      
+        <table border="1">
+            <caption>Liste des formations existantes</caption>
+            <tr>
+                <th>Code formation</th>
+                <th>Titre formation</th>
+            </tr>
+            <tbody>
+                
+                    <%
+                        ServiceFormation service = new ServiceFormation();
+                        List result = service.getAllFormation();
+                        for (Iterator iterator = result.iterator(); iterator.hasNext();) {
+                            Course c = (Course) iterator.next();
+
+                            out.print("<tr> <td>" + c.getCode() + "</td>");
+                            out.print("<td>" + c.getTitle() + "</td> </tr>");
+                        }
+
+
+                    %>
+               
+
+            </tbody>
+        </table>
     </body>
 </html>
