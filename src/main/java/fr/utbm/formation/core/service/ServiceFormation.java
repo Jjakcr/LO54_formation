@@ -14,6 +14,7 @@ import fr.utbm.formation.core.repository.LocationDAO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -69,11 +70,12 @@ public class ServiceFormation {
         csSD.addCourseSession(csS);
     }
     
-    public void getAllFormation(){
+    public List getAllFormation(){
         CourseDAO formation = new CourseDAO();
         CourseSessionDAO csS = new CourseSessionDAO();
         LocationDAO lc = new LocationDAO();
-        formation.getAllCourse();
+        return formation.getAllCourse();
+        
 }
     
 }

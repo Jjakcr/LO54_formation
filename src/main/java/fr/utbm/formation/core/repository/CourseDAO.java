@@ -73,13 +73,15 @@ public class CourseDAO {
 
     }
 
-    public void getAllCourse() {
+    public List getAllCourse() {
+        
+            List result = null;
           try {
             tx = session.beginTransaction();
             String hql = "FROM Course";
             Query query = session.createQuery(hql); //methode HQL
-            List result = query.list();
-           
+            result = query.list();
+        
             tx.commit();
             //return result; 
         } catch (HibernateException e) {
@@ -90,7 +92,7 @@ public class CourseDAO {
         } finally {
             session.close();
         }
-        
+        return result; 
     }
 
 
