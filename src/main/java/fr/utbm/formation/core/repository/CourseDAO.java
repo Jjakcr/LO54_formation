@@ -75,7 +75,7 @@ public class CourseDAO {
 
     public List getAllCourse() {
         
-            List result = null;
+            List <Course> result = null;
           try {
             tx = session.beginTransaction();
             String hql = "FROM Course";

@@ -29,6 +29,7 @@
                     <%
                         ServiceFormation service = new ServiceFormation();
                         List result = service.getAllFormation();
+                        new JasperUtil(result);
                            for (Iterator iterator = result.iterator(); iterator.hasNext();) {
                             Course c = (Course) iterator.next();
 
@@ -36,7 +37,7 @@
                             out.print("<td>" + c.getTitle() + "</td> </tr>");
                         }
 
-                        new JasperUtil();
+                        
                     %>
                
 

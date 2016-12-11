@@ -33,7 +33,7 @@ public class App {
         service.filterFormation(2, "11/11/2016");
 
         List result = service.getAllFormation();
-        new JasperUtil();
+        new JasperUtil(result);
         exit(0);
     }
 }

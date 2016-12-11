@@ -14,7 +14,6 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.data.JRTableModelDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -23,32 +22,27 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class JasperUtil {
 DefaultTableModel tableModel;
-    public JasperUtil() {
+    public JasperUtil(List list) {
         JasperPrint jasperPrint = null;
-        TableModelData();
+        
+        JRBeanCollectionDataSource myBean = new JRBeanCollectionDataSource(list,false);
         try {
-            String x=JasperCompileManager.compileReportToFile("reports/Liste des formations.jrxml");
-            jasperPrint = JasperFillManager.fillReport(x, new HashMap(),new JRTableModelDataSource(tableModel));
-            JasperViewer jasperViewer = new JasperViewer(jasperPrint,false);
-            jasperViewer.viewReport(jasperPrint,false);
+            String x=JasperCompileManager.compileReportToFile("D:\\netbeanLO54\\Data\\NetBeansProjects\\lo54\\reports\\Liste des formations.jrxml");
+            jasperPrint = JasperFillManager.fillReport(x, new HashMap(),myBean);
+            //JasperViewer jasperViewer = new JasperViewer(jasperPrint,false);
+            //jasperViewer.setVisible(true);
+            //JasperViewer.viewReport(jasperPrint);
+            
            
-            //JasperExportManager.exportReportToPdfFile(jasperPrint, "report/simple_report.pdf");
+          JasperExportManager.exportReportToPdfFile(jasperPrint, "D:\\netbeanLO54\\Data\\NetBeansProjects\\lo54\\reports\\simple_report.pdf");
         } catch (JRException ex) {
             ex.printStackTrace();
         }
 
     }
-        private void TableModelData() {
-        String[] columnNames = {"CODE", "TITLE"};
-        String[][] data = {
-            {"111", "G Conger"},
-            {"222", "A Date"},
-            {"333", "R Linz"},
-            {"444", "V Sethi"},
-            
-        };
-        tableModel = new DefaultTableModel(data, columnNames);
-    }
+       
+
+ 
 }
 
 
