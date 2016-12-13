@@ -69,11 +69,6 @@ public class CourseSession  implements java.io.Serializable {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-   
-
-
-
-
 }
 
 
