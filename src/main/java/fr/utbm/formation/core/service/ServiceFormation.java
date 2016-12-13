@@ -75,7 +75,14 @@ public class ServiceFormation {
         CourseSessionDAO csS = new CourseSessionDAO();
         LocationDAO lc = new LocationDAO();
         return formation.getAllCourse();
-        
-}
+    }
     
+    /* 
+    getAllFormationSession() = display all registered trainings
+    from COURSE_SESSION table (hql : courssession)
+    */
+    public List getAllFormationSession() {        
+        CourseSessionDAO csS = new CourseSessionDAO();
+        return csS.getAllCourseSession();
+    }
 }
