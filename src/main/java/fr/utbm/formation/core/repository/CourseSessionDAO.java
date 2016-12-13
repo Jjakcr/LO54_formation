@@ -72,4 +72,26 @@ public class CourseSessionDAO {
         }
 
     }
+    
+    public List getAllCourseSession() {
+        
+            List <CourseSession> result = null;
+          try {
+            tx = session.beginTransaction();
+            String hql = "FROM CourseSession";
+            Query query = session.createQuery(hql); //methode HQL
+            result = query.list();
+        
+            tx.commit();
+            //return result; 
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+                e.printStackTrace();
+            }
+        } finally {
+            session.close();
+        }
+        return result; 
+    }
 }
