@@ -17,29 +17,32 @@
         <title>Catalogue en ligne</title>
     </head>
     <body>
-        <h1>test!</h1>
-        <table >
-            <caption>Liste des formations existantes</caption>
+        <h1><font color="blue"><u>All training sessions</u></font></h1>
+        
+        <table>
+            
             <%
                 ServiceFormation service = new ServiceFormation();
-                List result = service.getAllFormation();
+                List result = service.getAllFormationSession();
             %>
+            
             <thead>
                 <tr>
                     <th>Code</th>
                     <th>Training sessions</th>
                     <th>Location</th>
+                    <th>Start date</th>
+                    <th>End dates</th>
                 </tr>
+                
                 <tr>
                     <th>
                         <select>
                             <%
-                                for (Iterator iterator = result.iterator(); iterator.hasNext(); ) {
-                                    
-                                    // TODO : Course c needs to be changed ... 
-                                    Course c = (Course) iterator.next();
-                                    out.print("<option value=\""+ c.getCode() + "\">"); 
-                                    out.print(c.getCode() + "</option>");
+                                for (Iterator iterator = result.iterator(); iterator.hasNext();) {
+                                    CourseSession csS = (CourseSession) iterator.next();
+                                    out.print("<option value=\""+ csS.getCourse().getCode()+ "\">"); 
+                                    out.print(csS.getCourse().getCode() + "</option>");
                                 }
                             %>
                         </select>
@@ -48,11 +51,9 @@
                         <select>
                             <%
                                 for (Iterator iterator = result.iterator(); iterator.hasNext(); ) {
-                                    
-                                    // TODO : Course c needs to be changed ...
-                                    Course c = (Course) iterator.next();
-                                    out.print("<option value=\"" + c.getTitle() + "\">"); 
-                                    out.print(c.getTitle() + "</option>");
+                                    CourseSession csS = (CourseSession) iterator.next();
+                                    out.print("<option value=\"" + csS.getCourse().getTitle() + "\">"); 
+                                    out.print( csS.getCourse().getTitle() + "</option>");
                                 }
                             %>
                         </select>
@@ -61,11 +62,31 @@
                         <select>
                             <%
                                 for (Iterator iterator = result.iterator(); iterator.hasNext(); ) {
-                                    
-                                    // TODO : Course c needs to be changed ...
-                                    Course c = (Course) iterator.next();
-                                    out.print("<option value=\"" + c.getTitle() + "\">"); 
-                                    out.print(c.getTitle() + "</option>");
+                                    CourseSession csS = (CourseSession) iterator.next();
+                                    out.print("<option value=\"" + csS.getLocation().getCity() + "\">"); 
+                                    out.print(csS.getLocation().getCity() + "</option>");
+                                }
+                            %>
+                        </select>
+                    </th>
+                    <th>
+                        <select>
+                            <%
+                                for (Iterator iterator = result.iterator(); iterator.hasNext(); ) {
+                                    CourseSession csS = (CourseSession) iterator.next();
+                                    out.print("<option value=\"" + csS.getStartDate() + "\">"); 
+                                    out.print(csS.getStartDate() + "</option>");
+                                }
+                            %>
+                        </select>
+                    </th>
+                    <th>
+                        <select>
+                            <%
+                                for (Iterator iterator = result.iterator(); iterator.hasNext(); ) {
+                                    CourseSession csS = (CourseSession) iterator.next();
+                                    out.print("<option value=\"" + csS.getEndDate() + "\">"); 
+                                    out.print(csS.getEndDate() + "</option>");
                                 }
                             %>
                         </select>
@@ -76,18 +97,19 @@
             <tbody>                
                 <%
                     for (Iterator iterator = result.iterator(); iterator.hasNext();) {
-                        out.print("iterator");
-                        Course c = (Course) iterator.next();
-                        out.print("<tr> <td>" + c.getCode() + "</td>");
-                        out.print("<td>" + c.getTitle() + "</td>");
-                        out.print("<td>" + c.getTitle() + "</td> </tr>");
+                        CourseSession csS = (CourseSession) iterator.next();
+                        out.print("<tr>"
+                                    + "<td>" + csS.getCourse().getCode() + "</td>"
+                                    + "<td>" + csS.getCourse().getTitle()+ "</td>"
+                                    + "<td>" + csS.getLocation().getCity()+ "</td>"
+                                    + "<td>" + csS.getStartDate() + "</td>"
+                                    + "<td>" + csS.getEndDate() + "</td>"
+                                + "</tr>");
                     }
-                    
-                        
                 %>
             </tbody>
         </table>
-                    
+        </br>                    
         <a href="/lo54/src/report1.jasper"><button>Print PDF</button></a>
     </body>
 </html>
