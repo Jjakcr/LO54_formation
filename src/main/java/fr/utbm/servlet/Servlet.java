@@ -20,15 +20,9 @@ public class Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet servlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            // Call JSP (homePage.jsp) here ? 
+            // Get values from DATABASE 
+            // Send values to JSP 
         }
     }
 
@@ -41,7 +35,7 @@ public class Servlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     public String getServletInfo() {
         return "Short description";
     }
