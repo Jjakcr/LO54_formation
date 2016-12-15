@@ -29,7 +29,7 @@
                     <%
                         ServiceFormation service = new ServiceFormation();
                         List result = service.getAllFormation();
-                        new JasperUtil(result);
+                        new JasperUtil (result);
                            for (Iterator iterator = result.iterator(); iterator.hasNext();) {
                             Course c = (Course) iterator.next();
 
@@ -43,6 +43,8 @@
 
             </tbody>
         </table>
-                    <button>créer un pdf</button>
+                    
+                   
+                    <button type="submit" name="pdf">créer un pdf</button>
     </body>
 </html>

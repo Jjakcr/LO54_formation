@@ -5,16 +5,16 @@
         <servlet-class>fr.utbm.servlet.Servlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListServlet</servlet-name>
-        <servlet-class>fr.utbm.servlet.ListServlet</servlet-class>
+        <servlet-name>RequestPdf</servlet-name>
+        <servlet-class>fr.utbm.servlet.RequestPdf</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>servlet</servlet-name>
         <url-pattern>/servlet/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListServlet</servlet-name>
-        <url-pattern>/ListServlet</url-pattern>
+        <servlet-name>RequestPdf</servlet-name>
+        <url-pattern>/RequestPdf</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -34,14 +34,14 @@ DefaultTableModel tableModel;
             //JasperViewer.viewReport(jasperPrint);
             
            
-          JasperExportManager.exportReportToPdfFile(jasperPrint, "D:\\netbeanLO54\\Data\\NetBeansProjects\\lo54\\reports\\simple_report.pdf");
+          JasperExportManager.exportReportToPdfFile(jasperPrint, "D:\\netbeanLO54\\Data\\NetBeansProjects\\lo54\\src\\main\\webapp\\tmp\\simple_report.pdf");
         } catch (JRException ex) {
             ex.printStackTrace();
         }
 
     }
        
-
+    
  
 }
 

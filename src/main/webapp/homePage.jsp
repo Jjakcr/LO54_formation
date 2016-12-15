@@ -4,6 +4,7 @@
     Author     : Pauline
 --%>
 
+
 <%@page import="fr.utbm.formation.core.repository.LocationDAO"%>
 <%@page import="fr.utbm.formation.core.entity.*"%>
 <%@page import="java.util.Iterator"%>
@@ -32,6 +33,8 @@
                         <%  
                             ServiceFormation service = new ServiceFormation();
                             List result = service.getAllFormationSession();
+                            List result2= service.getAllFormation();
+                            session.setAttribute("malist", result2);
                             for (Iterator iterator = result.iterator(); iterator.hasNext();) {
                                 CourseSession csS = (CourseSession) iterator.next();
                                 out.print("<option value=\""+ csS.getCourse().getCode()+ "\">"); 
@@ -136,7 +139,7 @@
     </br>
     
     <button class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left"></span> Previous </button>
-    <a href="/lo54/src/report1.jasper"><button class="btn btn-success"><span class="glyphicon glyphicon-save-file"></span> Print PDF </button></a>
+    <a href="RequestPdf"><button class="btn btn-success"><span class="glyphicon glyphicon-save-file"></span> Print PDF </button></a>
     <button class="btn btn-primary"> Next <span class="glyphicon glyphicon-chevron-right"></span></button>
 
 <%@include file="htmlTemplates/footer.html"%>
