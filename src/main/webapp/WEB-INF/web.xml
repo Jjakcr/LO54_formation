@@ -8,6 +8,10 @@
         <servlet-name>RequestPdf</servlet-name>
         <servlet-class>fr.utbm.servlet.RequestPdf</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Filter</servlet-name>
+        <servlet-class>fr.utbm.servlet.Filter</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servlet</servlet-name>
         <url-pattern>/servlet/*</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>RequestPdf</servlet-name>
         <url-pattern>/RequestPdf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Filter</servlet-name>
+        <url-pattern>/Filter</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

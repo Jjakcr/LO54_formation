@@ -5,14 +5,18 @@
  */
 package fr.utbm.formation.core.repository;
 
+import fr.utbm.formation.core.entity.CourseSession;
 import fr.utbm.formation.core.entity.Location;
 import fr.utbm.formation.core.tools.HibernateUtil;
 import java.util.Iterator;
 import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -48,14 +52,13 @@ public class LocationDAO {
         return !result.isEmpty();
     }
      
-    public void searchLocation( String loc){
-        String hql = "FROM Location where City ="+loc;
-        Query query = session.createQuery(hql);
-        List result = query.list();
-          for (Iterator iterator = result.iterator(); iterator.hasNext();) {
-            Location lc = (Location) iterator.next();
-                System.out.println("Ville : " + lc.getCity());
-                
-        }
-    }
+    public List searchLocation( String loc){
+        Criteria crit = session.createCriteria(CourseSession.class);
+        crit.setMaxResults(10);
+        crit.createAlias("location", "Loc");
+
+        crit.add(Restrictions.eq("Loc.city", loc));
+        List <CourseSession> result = crit.list();
+        return result;
+     }
 }

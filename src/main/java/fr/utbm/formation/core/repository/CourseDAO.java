@@ -6,13 +6,16 @@
 package fr.utbm.formation.core.repository;
 
 import fr.utbm.formation.core.entity.Course;
+import fr.utbm.formation.core.entity.CourseSession;
 import fr.utbm.formation.core.tools.HibernateUtil;
 import java.util.Iterator;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -49,18 +52,13 @@ public class CourseDAO {
         return !result.isEmpty();
     }
 
-    public void searchCourse(String filtre) {
-
+    public List searchCourse(String filtre) {
+        List <Course> result =null;
         try {
             tx = session.beginTransaction();
             String hql = "FROM Course where TITLE LIKE '%" + filtre + "%'";
             Query query = session.createQuery(hql); //methode HQL
-            List result = query.list();
-            for (Iterator iterator = result.iterator(); iterator.hasNext();) {
-                Course c = (Course) iterator.next();
-                System.out.print("Code: " + c.getCode());
-                System.out.print("Title :" + c.getTitle());
-            }
+            result = query.list();
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {
@@ -70,9 +68,17 @@ public class CourseDAO {
         } finally {
             session.close();
         }
-
+        return result;
     }
-
+    
+    public List searchCourseCS(String filtre){
+         Criteria crit = session.createCriteria(CourseSession.class);
+         crit.createAlias("course", "Crs");
+        crit.add(Restrictions.like("Crs.title", "%"+filtre+"%"));
+        List <CourseSession> result = crit.list();
+        return result;
+    }
+    
     public List getAllCourse() {
         
             List <Course> result = null;

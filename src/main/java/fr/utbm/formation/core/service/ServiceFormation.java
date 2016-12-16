@@ -24,15 +24,16 @@ import java.util.logging.Logger;
  */
 public class ServiceFormation {
 
-    public void filterFormation(int type, String filtre) {
+    public List filterFormation(int type, String filtre) {
         /*  type 1: mot clé dans titre
             type 2: par date
             type 3: par lieux
          */
+        List result =null;
         switch (type) {
             case 1:
                 CourseDAO formation = new CourseDAO();
-                formation.searchCourse(filtre);
+                 result = formation.searchCourseCS(filtre);
                 break;
             case 2:
                 SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
@@ -40,7 +41,7 @@ public class ServiceFormation {
                 try {
                     filterDate = formatter.parse(filtre);
                     CourseSessionDAO cs = new CourseSessionDAO();
-                    cs.searchCourseSession(filterDate);
+                    result = cs.searchCourseSession(filterDate);
                 } catch (ParseException ex) {
                     Logger.getLogger(ServiceFormation.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -48,10 +49,10 @@ public class ServiceFormation {
 
             case 3:
                 LocationDAO loc= new LocationDAO();
-                loc.searchLocation(filtre);
+                result=loc.searchLocation(filtre);
                 break;
         }
-
+        return result;
     }
 
     public void registerCourse(Course f, Location loc) {
@@ -72,8 +73,8 @@ public class ServiceFormation {
     
     public List getAllFormation(){
         CourseDAO formation = new CourseDAO();
-        CourseSessionDAO csS = new CourseSessionDAO();
-        LocationDAO lc = new LocationDAO();
+        //CourseSessionDAO csS = new CourseSessionDAO();
+        //LocationDAO lc = new LocationDAO();
         return formation.getAllCourse();
     }
     

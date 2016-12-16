@@ -55,21 +55,14 @@ public class CourseSessionDAO {
         }
     }
 
-    public void searchCourseSession(Date filterDate) {
+    public List searchCourseSession(Date filterDate) {
         //requète par critère
         
-        Criteria crit = session.createCriteria(CourseSession.class).setFetchMode("Course", FetchMode.JOIN);
+        Criteria crit = session.createCriteria(CourseSession.class);
         crit.setMaxResults(10);
         crit.add(Restrictions.eq("startDate", filterDate));
-        List result = crit.list();
-        for (Iterator iterator = result.iterator(); iterator.hasNext();) {
-            CourseSession cs = (CourseSession) iterator.next();
-            
-                System.out.println("ID: " + cs.getIdSession());
-                System.out.println("titre :"+ cs.getCourse().getTitle());
-                System.out.println(" Date debut :" + cs.getStartDate());
-                System.out.println("lieux :" + cs.getLocation().getCity());
-        }
+        List <CourseSession> result = crit.list();
+        return result;
 
     }
     
