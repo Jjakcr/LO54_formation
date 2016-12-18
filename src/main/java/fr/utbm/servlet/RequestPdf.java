@@ -7,6 +7,7 @@ package fr.utbm.servlet;
 
 import fr.utbm.formation.core.tools.JasperUtil;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -33,14 +34,15 @@ public class RequestPdf extends HttpServlet {
             throws ServletException, IOException {
         
             
-       this.getServletContext().getRequestDispatcher( "/tmp/simple_report.pdf" ).forward( request, response );
-        try (PrintWriter out = response.getWriter()) {
+      
+        try (OutputStream out = response.getOutputStream()) {
             /* TODO output your page here. You may use following sample code. */
            List result= (List) request.getSession().getAttribute("malist");
-             new JasperUtil(result);
+             new JasperUtil(result,response.getOutputStream());
              
           
         }
+        this.getServletContext().getRequestDispatcher( "/outPdf.jsp" ).forward( request, response );
         
     }
 

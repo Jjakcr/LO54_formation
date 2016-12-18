@@ -17,6 +17,17 @@
 <body>
     <h1><font color="blue"><u>All training sessions</u></font></h1>
     <div class="table-responsive">
+        <%
+                            ServiceFormation service = new ServiceFormation();
+                            
+                            
+                            List result = (List) request.getAttribute("result");
+                            //result = service.filterFormation(1, "autre");
+                            
+                            if (result == null){
+                                //out.print("<h1>NULL</h1>");
+                                result = service.getAllFormationSession();
+                            }%>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -28,12 +39,11 @@
                     <th></th>
                 </tr>
                 <tr>
-            <form method="post" action="filter">
+            <form method="post" action="Filter">
                 <th>
                     <select>
                         <%
-                            ServiceFormation service = new ServiceFormation();
-                            List result = service.filterFormation(1, "test");
+                            
                             List result2 = service.getAllFormation();
                             session.setAttribute("malist", result2);
                             for (Iterator iterator = result.iterator(); iterator.hasNext();) {

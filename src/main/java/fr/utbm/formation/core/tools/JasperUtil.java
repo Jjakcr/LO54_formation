@@ -5,6 +5,7 @@
  */
 package fr.utbm.formation.core.tools;
 
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +23,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class JasperUtil {
 DefaultTableModel tableModel;
-    public JasperUtil(List list) {
+    public JasperUtil(List list, OutputStream outStream) {
         JasperPrint jasperPrint = null;
         
         JRBeanCollectionDataSource myBean = new JRBeanCollectionDataSource(list,false);
@@ -34,7 +35,7 @@ DefaultTableModel tableModel;
             //JasperViewer.viewReport(jasperPrint);
             
            
-          JasperExportManager.exportReportToPdfFile(jasperPrint, "D:\\netbeanLO54\\Data\\NetBeansProjects\\lo54\\src\\main\\webapp\\tmp\\simple_report.pdf");
+          JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
         } catch (JRException ex) {
             ex.printStackTrace();
         }
