@@ -4,6 +4,7 @@
     Author     : Jean- Jacques
 --%>
 
+<%@page import="fr.utbm.formation.core.entity.CourseSession"%>
 <%@page import="fr.utbm.formation.core.tools.JasperUtil"%>
 <%@page import="fr.utbm.formation.core.entity.Course"%>
 <%@page import="java.util.Iterator"%>
@@ -27,15 +28,16 @@
             <tbody>
                 
                     <%
-                        ServiceFormation service = new ServiceFormation();
-                        List result = service.getAllFormation();
-                        new JasperUtil (result);
-                           for (Iterator iterator = result.iterator(); iterator.hasNext();) {
-                            Course c = (Course) iterator.next();
-
-                            out.print("<tr> <td>" + c.getCode() + "</td>");
-                            out.print("<td>" + c.getTitle() + "</td> </tr>");
+                       
+                        List result = (List) request.getAttribute("result");
+                        if (result.isEmpty()){
+                            out.println("ohohoh");
                         }
+                           for (Iterator iterator = result.iterator(); iterator.hasNext();) {
+                                CourseSession csS = (CourseSession) iterator.next();
+                                out.println("<h1>" + csS.getCourse().getCode() + "</h1>");
+                                out.println("<h1>"+csS.getCourse().getCode() + "</h1>");
+                            }
 
                         
                     %>

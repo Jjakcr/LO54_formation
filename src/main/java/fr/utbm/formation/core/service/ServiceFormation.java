@@ -29,11 +29,11 @@ public class ServiceFormation {
             type 2: par date
             type 3: par lieux
          */
-        List result =null;
+        List result = null;
         switch (type) {
             case 1:
                 CourseDAO formation = new CourseDAO();
-                 result = formation.searchCourseCS(filtre);
+                result = formation.searchCourseCS(filtre);
                 break;
             case 2:
                 SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
@@ -48,8 +48,11 @@ public class ServiceFormation {
                 break;
 
             case 3:
-                LocationDAO loc= new LocationDAO();
-                result=loc.searchLocation(filtre);
+                LocationDAO loc = new LocationDAO();
+                result = loc.searchLocation(filtre);
+                break;
+            default:
+                result=this.getAllFormationSession();
                 break;
         }
         return result;
@@ -58,31 +61,31 @@ public class ServiceFormation {
     public void registerCourse(Course f, Location loc) {
         CourseDAO formation = new CourseDAO();
         LocationDAO lc = new LocationDAO();
-        if (!formation.isExist(f.getCode())){
-        formation.addCourse(f);
+        if (!formation.isExist(f.getCode())) {
+            formation.addCourse(f);
         }
-        if(!loc.getCity().isEmpty() && !lc.isExist(loc.getId())){
-           lc.addLocation(loc);
-        }      
+        if (!loc.getCity().isEmpty() && !lc.isExist(loc.getId())) {
+            lc.addLocation(loc);
+        }
     }
-    
-    public void resgisterCourseSession(CourseSession csS){
-        CourseSessionDAO csSD= new CourseSessionDAO();
+
+    public void resgisterCourseSession(CourseSession csS) {
+        CourseSessionDAO csSD = new CourseSessionDAO();
         csSD.addCourseSession(csS);
     }
-    
-    public List getAllFormation(){
+
+    public List getAllFormation() {
         CourseDAO formation = new CourseDAO();
         //CourseSessionDAO csS = new CourseSessionDAO();
         //LocationDAO lc = new LocationDAO();
         return formation.getAllCourse();
     }
-    
+
     /* 
     getAllFormationSession() = display all registered trainings
     from COURSE_SESSION table (hql : courssession)
-    */
-    public List getAllFormationSession() {        
+     */
+    public List getAllFormationSession() {
         CourseSessionDAO csS = new CourseSessionDAO();
         return csS.getAllCourseSession();
     }

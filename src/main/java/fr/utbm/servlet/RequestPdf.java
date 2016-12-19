@@ -7,10 +7,9 @@ package fr.utbm.servlet;
 
 import fr.utbm.formation.core.tools.JasperUtil;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +34,7 @@ public class RequestPdf extends HttpServlet {
         
             
       
-        try (OutputStream out = response.getOutputStream()) {
+        try (ServletOutputStream out=response.getOutputStream()) {
             /* TODO output your page here. You may use following sample code. */
            List result= (List) request.getSession().getAttribute("malist");
              new JasperUtil(result,response.getOutputStream());

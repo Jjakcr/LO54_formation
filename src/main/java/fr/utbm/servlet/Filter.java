@@ -8,7 +8,9 @@ package fr.utbm.servlet;
 import fr.utbm.formation.core.service.ServiceFormation;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,17 +33,20 @@ public class Filter extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        ServiceFormation service = new ServiceFormation();
+        List result = service.getAllFormationSession();
+        String title = (String) request.getParameter("titleFilter");
+        if (title != null) {
+            result = service.filterFormation(1, title);
+        }
+        request.setAttribute("result",result);
         this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
 
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            String title = (String) request.getParameter("titleFilter");
-            ServiceFormation service = new ServiceFormation();
-            
-            request.setAttribute("result", service.filterFormation(1, title));
-            this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
+
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
