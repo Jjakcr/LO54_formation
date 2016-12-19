@@ -47,7 +47,7 @@ public class Filter extends HttpServlet {
         
             result = service.filterFormation(3, loc);
         }
-        if (date != null){
+        if ((date != null) && (date.length()!=0)){
             result= service.filterFormation(2, date);
         }
         if (result.isEmpty()){
