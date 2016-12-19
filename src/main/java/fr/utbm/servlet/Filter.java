@@ -35,11 +35,18 @@ public class Filter extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ServiceFormation service = new ServiceFormation();
         List result = service.getAllFormationSession();
+        List location = service.getAllFormationLoc();
         String title = (String) request.getParameter("titleFilter");
+        String loc= (String) request.getParameter("locFilter");
         if (title != null) {
             result = service.filterFormation(1, title);
         }
+        if ((loc !=null) && !("vide".equals(loc))){
+        
+            result = service.filterFormation(3, loc);
+        }
         request.setAttribute("result",result);
+        request.setAttribute("listLocation",location);
         this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
 
         try (PrintWriter out = response.getWriter()) {
