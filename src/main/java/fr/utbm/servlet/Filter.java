@@ -36,8 +36,10 @@ public class Filter extends HttpServlet {
         ServiceFormation service = new ServiceFormation();
         List result = service.getAllFormationSession();
         List location = service.getAllFormationLoc();
+        String display = "none";
         String title = (String) request.getParameter("titleFilter");
         String loc= (String) request.getParameter("locFilter");
+        String date= (String) request.getParameter("dateFilter");
         if (title != null) {
             result = service.filterFormation(1, title);
         }
@@ -45,8 +47,16 @@ public class Filter extends HttpServlet {
         
             result = service.filterFormation(3, loc);
         }
+        if (date != null){
+            result= service.filterFormation(2, date);
+        }
+        if (result.isEmpty()){
+            display="";
+            result = service.getAllFormationSession();
+        }
         request.setAttribute("result",result);
         request.setAttribute("listLocation",location);
+        request.setAttribute("visible",display);
         this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
 
         try (PrintWriter out = response.getWriter()) {

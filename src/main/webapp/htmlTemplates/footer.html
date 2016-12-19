@@ -1,1 +1,19 @@
-</body>
+      
+        <script type="text/javascript">
+            $('#startFilter').datepicker({
+                format: 'mm/dd/yyyy',
+                startDate: 'now',
+                autoclose: 'true',
+                orientation:'auto'
+            });
+            /*correction bug datepicker */
+            function datePickBug(){
+            var datepick = document.getElementsByClassName('datepicker-orient-bottom');
+            
+            var top = datepick[0].offsetTop+20;
+            datepick[0].style.top =top+'px';
+            }
+        </script>
+    </body>
+
+</html>

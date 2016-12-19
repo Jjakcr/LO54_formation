@@ -26,9 +26,12 @@
 
         %>
 
-        ${result[1].location.city} <br>
+        <div class="alert alert-info" role="alert" style="display: ${visible}">
+            Aucun résultat trouvé
+        </div>
         <table class="table table-striped table-hover">
             <thead>
+
                 <tr>
                     <th>Code</th>
                     <th>Training sessions</th>
@@ -37,37 +40,41 @@
                     <th>End dates</th>
                     <th></th>
                 </tr>
+
                 <tr>
             <form method="post" action="Filter">
                 <th>
                 </th>
                 <th>
-                    <input type="text" id="title" name="titleFilter" value="" size="20" maxlength="20" />
+                    <input class="form-control" type="text" id="title" name="titleFilter" value="" size="20" maxlength="20" />
 
                 </th>
                 <th>
-                    <select>
-                        <c:forEach var="list" items="${result}">
-                            <option value ="${list.location.city}">${list.location.city}</option>
+                    <select class="form-control" name="locFilter">
+                        <option value = "vide"></option>
+                        <c:forEach var="listloc" items="${listLocation}">
+                            <option value ="${listloc.city}">${listloc.city}</option>
                         </c:forEach>
                     </select>
                 </th>
                 <th>
-                    <select>
 
-                    </select>
+                    <input id="startFilter" name="dateFilter" type="text" class="form-control datepicker" onclick="datePickBug()" >
+
+
                 </th>
                 <th>
-                    <select>
 
-                    </select>
                 </th>
                 <th> <input type="submit" value="Search" class="btn btn-success" /></th>
             </form>
             </tr>
+
+
             </thead>
 
-            <tbody>                
+            <tbody>   
+
                 <c:forEach var="list" items="${result}">
                     <tr>
 

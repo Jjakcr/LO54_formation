@@ -89,4 +89,9 @@ public class ServiceFormation {
         CourseSessionDAO csS = new CourseSessionDAO();
         return csS.getAllCourseSession();
     }
+    
+    public List getAllFormationLoc(){
+        LocationDAO loc= new LocationDAO();
+        return loc.getAllLocation();
+    }
 }
