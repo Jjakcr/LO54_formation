@@ -25,7 +25,7 @@ public class ClientDAO {
 
     public boolean addClient(Client cl) {
 
-        if (!this.isAlreadyInscrit(cl)) {
+        if (!this.isAlreadySubscribed(cl)) {
             try {
 
                 tx = session.beginTransaction();
@@ -47,12 +47,12 @@ public class ClientDAO {
         }
     }
 
-    public boolean isAlreadyInscrit(Client cl) {
-        String idCl = Integer.toString(cl.getIdClient());
+    public boolean isAlreadySubscribed(Client cl) {
+        String adCl = cl.getEmail();
         String idSCl = Integer.toString(cl.getCourseSession().getIdSession());
         Criteria crit = session.createCriteria(Client.class);
         crit.createAlias("coursesession", "CrsS");
-        crit.add(Restrictions.eq("idClient", idCl));
+        crit.add(Restrictions.eq("idClient", adCl));
         crit.add(Restrictions.eq("CrsS.idSession", idSCl));
         List result = crit.list();
         return !result.isEmpty();

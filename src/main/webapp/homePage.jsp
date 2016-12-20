@@ -83,7 +83,7 @@
                             ${list.course.code}
 
                         </td>
-                        <td>
+                        <td id="title${list.idSession}">
 
                             ${list.course.title}
 
@@ -105,28 +105,11 @@
                         </td>
 
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#register">
+                            <button type="button" value="${list.idSession}" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#register" onclick="returnValue(this)">
+                                <span class="glyphicon glyphicon-plus" >
                                 </span>
                             </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            ...
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </td>
                     </tr>
                 </c:forEach>
@@ -139,5 +122,64 @@
     <button class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left"></span> Previous </button>
     <a href="RequestPdf"><button class="btn btn-success"><span class="glyphicon glyphicon-save-file"></span> Print PDF </button></a>
     <button class="btn btn-primary"> Next <span class="glyphicon glyphicon-chevron-right"></span></button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Subscribe</h4>
+                </div>
+                <form class="form-horizontal" method="post" action="Sub">
+                    <div  class="modal-body">
+                        <input id ="idSess" type="hidden" name="idSess">
+                        
+                        
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="fisrtN">Firstname:</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="firstName" class="form-control" id="fisrtN" placeholder="Enter firstname">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="lastN">Lastname:</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="lastName" class="form-control" id="lasrtN" placeholder="Enter lastname">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="addr">Address:</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="address" class="form-control" id="addr" placeholder="Enter address">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="phone">Phone:</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="phone" class="form-control" id="phone" placeholder="Enter phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Email:</label>
+                            <div class="col-sm-10">
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Subcribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <%@include file="htmlTemplates/footer.html"%>

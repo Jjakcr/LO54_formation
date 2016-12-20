@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    
     <servlet>
         <servlet-name>servlet</servlet-name>
         <servlet-class>fr.utbm.servlet.Servlet</servlet-class>
@@ -13,6 +12,10 @@
         <servlet-name>Filter</servlet-name>
         <servlet-class>fr.utbm.servlet.Filter</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Sub</servlet-name>
+        <servlet-class>fr.utbm.servlet.Sub</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servlet</servlet-name>
         <url-pattern>/servlet/*</url-pattern>
@@ -24,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>Filter</servlet-name>
         <url-pattern>/Filter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Sub</servlet-name>
+        <url-pattern>/Sub</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

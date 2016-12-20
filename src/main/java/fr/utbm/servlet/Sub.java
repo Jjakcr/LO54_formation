@@ -1,16 +1,13 @@
-package fr.utbm.servlet;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import fr.utbm.formation.core.service.ServiceFormation;
+package fr.utbm.servlet;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jean- Jacques
  */
-public class Filter extends HttpServlet {
+public class Sub extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,39 +30,12 @@ public class Filter extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ServiceFormation service = new ServiceFormation();
-        List result = service.getAllFormationSession();
-        List location = service.getAllFormationLoc();
-        String display = "none";
-        String title = (String) request.getParameter("titleFilter");
-        String loc= (String) request.getParameter("locFilter");
-        String date= (String) request.getParameter("dateFilter");
-        if (title != null) {
-            result = service.filterFormation(1, title);
-        }
-        if ((loc !=null) && !("vide".equals(loc))){
-        
-            result = service.filterFormation(3, loc);
-        }
-        if ((date != null) && (date.length()!=0)){
-            result= service.filterFormation(2, date);
-        }
-        if (result.isEmpty()){
-            display="";
-            result = service.getAllFormationSession();
-        }
-        request.setAttribute("result",result);
-        request.setAttribute("listLocation",location);
-        request.setAttribute("visible",display);
-        
-        this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
-        
-
+        String name=request.getParameter("firstName");
+        String id=request.getParameter("idSess");
+        //this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-
+            out.print(name+" inscrit "+id);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
