@@ -5,9 +5,11 @@
  */
 package fr.utbm.formation.core.service;
 
+import fr.utbm.formation.core.entity.Client;
 import fr.utbm.formation.core.entity.Course;
 import fr.utbm.formation.core.entity.CourseSession;
 import fr.utbm.formation.core.entity.Location;
+import fr.utbm.formation.core.repository.ClientDAO;
 import fr.utbm.formation.core.repository.CourseDAO;
 import fr.utbm.formation.core.repository.CourseSessionDAO;
 import fr.utbm.formation.core.repository.LocationDAO;
@@ -52,7 +54,7 @@ public class ServiceFormation {
                 result = loc.searchLocation(filtre);
                 break;
             default:
-                result=this.getAllFormationSession();
+                result = this.getAllFormationSession();
                 break;
         }
         return result;
@@ -89,9 +91,17 @@ public class ServiceFormation {
         CourseSessionDAO csS = new CourseSessionDAO();
         return csS.getAllCourseSession();
     }
-    
-    public List getAllFormationLoc(){
-        LocationDAO loc= new LocationDAO();
+
+    public List getAllFormationLoc() {
+        LocationDAO loc = new LocationDAO();
         return loc.getAllLocation();
+    }
+
+    public boolean subscribe(String lastname, String firstname, String address, String phone, String email, String idSession) {
+        Client cl = new Client(lastname, firstname, address, phone, email);
+        CourseSessionDAO getCsS = new CourseSessionDAO();
+        cl.setCourseSession(getCsS.getCourseSessionById(idSession));
+        ClientDAO clD = new ClientDAO();
+        return clD.addClient(cl);
     }
 }

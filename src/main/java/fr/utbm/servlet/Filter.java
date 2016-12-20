@@ -34,33 +34,32 @@ public class Filter extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ServiceFormation service = new ServiceFormation();
+        request.getSession().setAttribute("service", service);
         List result = service.getAllFormationSession();
         List location = service.getAllFormationLoc();
         String display = "none";
         String title = (String) request.getParameter("titleFilter");
-        String loc= (String) request.getParameter("locFilter");
-        String date= (String) request.getParameter("dateFilter");
+        String loc = (String) request.getParameter("locFilter");
+        String date = (String) request.getParameter("dateFilter");
         if (title != null) {
             result = service.filterFormation(1, title);
         }
-        if ((loc !=null) && !("vide".equals(loc))){
-        
+        if ((loc != null) && !("vide".equals(loc))) {
+
             result = service.filterFormation(3, loc);
         }
-        if ((date != null) && (date.length()!=0)){
-            result= service.filterFormation(2, date);
+        if ((date != null) && (date.length() != 0)) {
+            result = service.filterFormation(2, date);
         }
-        if (result.isEmpty()){
-            display="";
+        if (result.isEmpty()) {
+            display = "";
             result = service.getAllFormationSession();
         }
-        request.getSession().setAttribute("result",result);
-        request.setAttribute("listLocation",location);
-        request.setAttribute("visible",display);
-        
-        
+        request.getSession().setAttribute("result", result);
+        request.setAttribute("listLocation", location);
+        request.setAttribute("visible", display);
+
         this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
-        
 
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

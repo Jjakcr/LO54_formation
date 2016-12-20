@@ -49,12 +49,11 @@ public class ClientDAO {
 
     public boolean isAlreadySubscribed(Client cl) {
         String adCl = cl.getEmail();
-        String idSCl = Integer.toString(cl.getCourseSession().getIdSession());
+        int idSCl = cl.getCourseSession().getIdSession();
         Criteria crit = session.createCriteria(Client.class);
-        crit.createAlias("coursesession", "CrsS");
-        crit.add(Restrictions.eq("idClient", adCl));
-        crit.add(Restrictions.eq("CrsS.idSession", idSCl));
-        List result = crit.list();
+        crit.createAlias("courseSession", "CrsS");
+        crit.add(Restrictions.and(Restrictions.eq("email", adCl),(Restrictions.eq("CrsS.idSession", idSCl))));
+        List <Client> result = crit.list();
         return !result.isEmpty();
     }
 

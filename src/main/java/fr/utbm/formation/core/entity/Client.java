@@ -10,7 +10,7 @@ public class Client implements java.io.Serializable {
     private String lastname;
     private String firstname;
     private String address;
-    private long phone;
+    private String phone;
     private String email;
     private CourseSession courseSession;
 
@@ -25,17 +25,18 @@ public class Client implements java.io.Serializable {
     public Client() {
     }
 
-    public Client(int idClient, String lastname, String firstname, String address, long phone, String email) {
-        this.idClient = idClient;
+    public Client(String lastname, String firstname, String address, String phone, String email) {
+       
         this.lastname = lastname;
         this.firstname = firstname;
         this.address = address;
         this.phone = phone;
         this.email = email;
+      
     }
 
-    public Client(int idClient, String lastname, String firstname, String address, long phone, String email, CourseSession courseSession) {
-        this.idClient = idClient;
+    public Client(String lastname, String firstname, String address, String phone, String email, CourseSession courseSession) {
+        //this.idClient = idClient;
         this.lastname = lastname;
         this.firstname = firstname;
         this.address = address;
@@ -76,11 +77,11 @@ public class Client implements java.io.Serializable {
         this.address = address;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return this.phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

@@ -5,6 +5,8 @@
  */
 package fr.utbm.servlet;
 
+import fr.utbm.formation.core.repository.ClientDAO;
+import fr.utbm.formation.core.service.ServiceFormation;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,11 +32,18 @@ public class Sub extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String name=request.getParameter("firstName");
-        String id=request.getParameter("idSess");
-        //this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
+        ServiceFormation service = (ServiceFormation) request.getSession().getAttribute("service");
+        String firstname = request.getParameter("firstName");
+        String lastname = request.getParameter("lastName");
+        String add = request.getParameter("address");
+        String phone = request.getParameter("phone");
+        String mail = request.getParameter("email");
+        String id = request.getParameter("idSess");
+        request.setAttribute("inscritOK", service.subscribe(lastname, firstname, add, phone, mail, id));
+
+        this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
         try (PrintWriter out = response.getWriter()) {
-            out.print(name+" inscrit "+id);
+
         }
     }
 

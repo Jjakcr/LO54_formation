@@ -31,18 +31,15 @@ public class RequestPdf extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            
-      
-        try (ServletOutputStream out=response.getOutputStream()) {
+
+        try (ServletOutputStream out = response.getOutputStream()) {
             /* TODO output your page here. You may use following sample code. */
-           List result= (List) request.getSession().getAttribute("result");
-             new JasperUtil(result,response.getOutputStream());
-             
-          
+            List result = (List) request.getSession().getAttribute("result");
+            new JasperUtil(result, response.getOutputStream());
+
         }
-        this.getServletContext().getRequestDispatcher( "/outPdf.jsp" ).forward( request, response);
-        
+        this.getServletContext().getRequestDispatcher("/outPdf.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

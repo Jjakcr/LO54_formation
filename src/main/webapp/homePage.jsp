@@ -18,11 +18,13 @@
 <body>
     <h1><font color="blue"><u>All training sessions</u></font></h1>
     <div class="table-responsive">
-        
+
 
         <div class="alert alert-info" role="alert" style="display: ${visible}">
             Aucun résultat trouvé
         </div>
+
+        <h1>${inscritOK}</h1>
         <table class="table table-striped table-hover">
             <thead>
 
@@ -128,8 +130,8 @@
                 <form class="form-horizontal" method="post" action="Sub">
                     <div  class="modal-body">
                         <input id ="idSess" type="hidden" name="idSess">
-                        
-                        
+
+
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="fisrtN">Firstname:</label>
                             <div class="col-sm-10">
@@ -143,14 +145,14 @@
                                 <input type="text"  name="lastName" class="form-control" id="lasrtN" placeholder="Enter lastname">
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="addr">Address:</label>
                             <div class="col-sm-10">
                                 <input type="text"  name="address" class="form-control" id="addr" placeholder="Enter address">
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="phone">Phone:</label>
                             <div class="col-sm-10">

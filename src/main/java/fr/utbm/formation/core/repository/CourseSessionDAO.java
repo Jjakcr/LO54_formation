@@ -5,14 +5,11 @@
  */
 package fr.utbm.formation.core.repository;
 
-import fr.utbm.formation.core.entity.Course;
 import fr.utbm.formation.core.entity.CourseSession;
 import fr.utbm.formation.core.tools.HibernateUtil;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -87,4 +84,27 @@ public class CourseSessionDAO {
         }
         return result; 
     }
+    
+    public CourseSession getCourseSessionById(String idSession) {
+        
+            CourseSession result = null;
+          try {
+            tx = session.beginTransaction();
+            String hql = "FROM CourseSession where idSession =" +idSession;
+            Query query = session.createQuery(hql); //methode HQL
+            result = (CourseSession) query.uniqueResult();
+        
+            tx.commit();
+          
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+                e.printStackTrace();
+            }
+        } finally {
+            session.close();
+        }
+        return result; 
+    }
+    
 }
