@@ -36,12 +36,12 @@ public class RequestPdf extends HttpServlet {
       
         try (ServletOutputStream out=response.getOutputStream()) {
             /* TODO output your page here. You may use following sample code. */
-           List result= (List) request.getSession().getAttribute("malist");
+           List result= (List) request.getSession().getAttribute("result");
              new JasperUtil(result,response.getOutputStream());
              
           
         }
-        this.getServletContext().getRequestDispatcher( "/outPdf.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/outPdf.jsp" ).forward( request, response);
         
     }
 

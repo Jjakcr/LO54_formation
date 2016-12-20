@@ -54,9 +54,10 @@ public class Filter extends HttpServlet {
             display="";
             result = service.getAllFormationSession();
         }
-        request.setAttribute("result",result);
+        request.getSession().setAttribute("result",result);
         request.setAttribute("listLocation",location);
         request.setAttribute("visible",display);
+        
         
         this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
         

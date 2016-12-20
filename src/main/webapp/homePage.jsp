@@ -18,13 +18,7 @@
 <body>
     <h1><font color="blue"><u>All training sessions</u></font></h1>
     <div class="table-responsive">
-        <%
-            ServiceFormation service = new ServiceFormation();
-
-            List result2 = service.getAllFormation();
-            session.setAttribute("malist", result2);
-
-        %>
+        
 
         <div class="alert alert-info" role="alert" style="display: ${visible}">
             Aucun résultat trouvé
