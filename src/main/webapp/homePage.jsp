@@ -20,8 +20,29 @@
     <div class="table-responsive">
 
 
-        <div class="alert alert-info" role="alert" style="display: ${visible}">
+        <div class="alert alert-info alert-dismissible" role="alert" style="display: ${visible}">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
             Aucun résultat trouvé
+        </div>
+
+        <div class="alert alert-${typeAl} alert-dismissible" role="alert" style="display: ${visible}">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <c:choose>
+                <c:when test="${inscritOK}">
+                    Votre inscrition est faite 
+                    
+                </c:when>    
+                <c:otherwise>
+                    Vous êtes déjà inscrit
+                    
+
+                </c:otherwise>
+            </c:choose>
+
         </div>
 
         <h1>${inscritOK}</h1>
