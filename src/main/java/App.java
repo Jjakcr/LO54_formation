@@ -41,7 +41,7 @@ public class App {
         CourseSessionDAO getCsS = new CourseSessionDAO();
         CourseSession cs=getCsS.getCourseSessionById("1");
         System.out.print(cs);
-        
+        service.subscribe("lastname", "firstname", "address", "phone", "email", "2");
         ClientDAO clD= new ClientDAO();
         Client cl= new Client("lastname", "firstname","address", "phone", "email",cs);
        // clD.addClient(cl);
@@ -51,7 +51,7 @@ public class App {
        else{
          System.out.println("n'est pas inscrit");  
        }
-        //service.subscribe("lastname", "firstname", "address", "phone", "email", "2");
+        service.getMyFormations("emailx");
         exit(0);
     }
 }

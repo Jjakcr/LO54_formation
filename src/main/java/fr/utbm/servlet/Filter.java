@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,6 +34,7 @@ public class Filter extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ServiceFormation service = new ServiceFormation();
         request.getSession().setAttribute("service", service);
+        
         List result = service.getAllFormationSession();
         List location = service.getAllFormationLoc();
         String display = "none";
@@ -55,9 +55,13 @@ public class Filter extends HttpServlet {
             display = "";
             result = service.getAllFormationSession();
         }
+        
+        
+        request.setAttribute("visible2", "none");
+        
         request.getSession().setAttribute("result", result);
-        request.setAttribute("listLocation", location);
-        request.setAttribute("visible", display);
+        request.getSession().setAttribute("listLocation", location);
+        request.getSession().setAttribute("visible", display);
 
         this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
 

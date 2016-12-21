@@ -26,26 +26,28 @@
             </button>
             Aucun résultat trouvé
         </div>
-
-        <div class="alert alert-${typeAl} alert-dismissible" role="alert" style="display: ${visible}">
+        <!-- test des balises jstl-->
+        <div class="alert alert-${typeAl} alert-dismissible" role="alert" style="display: ${visible2}">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <c:choose>
                 <c:when test="${inscritOK}">
                     Votre inscrition est faite 
-                    
+
                 </c:when>    
+               
                 <c:otherwise>
-                    Vous êtes déjà inscrit
                     
+                    Vous êtes déjà inscrit
+
 
                 </c:otherwise>
             </c:choose>
 
         </div>
 
-        <h1>${inscritOK}</h1>
+        
         <table class="table table-striped table-hover">
             <thead>
 

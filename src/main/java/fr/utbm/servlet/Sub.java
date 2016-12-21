@@ -39,7 +39,15 @@ public class Sub extends HttpServlet {
         String phone = request.getParameter("phone");
         String mail = request.getParameter("email");
         String id = request.getParameter("idSess");
-        request.setAttribute("inscritOK", service.subscribe(lastname, firstname, add, phone, mail, id));
+        boolean inscritOK =service.subscribe(lastname, firstname, add, phone, mail, id);
+        
+        String typeAl = "warning";
+        if (inscritOK){
+            typeAl = "success";
+        }
+        request.setAttribute("inscritOK", inscritOK);
+        request.setAttribute("typeAl",typeAl);
+        
 
         this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
         try (PrintWriter out = response.getWriter()) {

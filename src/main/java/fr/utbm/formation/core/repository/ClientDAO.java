@@ -6,7 +6,10 @@
 package fr.utbm.formation.core.repository;
 
 import fr.utbm.formation.core.entity.Client;
+import fr.utbm.formation.core.entity.CourseSession;
 import fr.utbm.formation.core.tools.HibernateUtil;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -41,8 +44,7 @@ public class ClientDAO {
                 session.close();
             }
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -52,9 +54,25 @@ public class ClientDAO {
         int idSCl = cl.getCourseSession().getIdSession();
         Criteria crit = session.createCriteria(Client.class);
         crit.createAlias("courseSession", "CrsS");
-        crit.add(Restrictions.and(Restrictions.eq("email", adCl),(Restrictions.eq("CrsS.idSession", idSCl))));
-        List <Client> result = crit.list();
+        crit.add(Restrictions.and(Restrictions.eq("email", adCl), (Restrictions.eq("CrsS.idSession", idSCl))));
+        List<Client> result = crit.list();
         return !result.isEmpty();
+    }
+
+    public List getFormation(String email) {
+        List<CourseSession> result = new LinkedList();
+        Criteria crit = session.createCriteria(Client.class);
+        crit.setMaxResults(10);
+        crit.add(Restrictions.eq("email", email));
+        List<Client> preresult = crit.list();
+        for (Iterator iterator = preresult.iterator(); iterator.hasNext();) {
+            Client cl = (Client) iterator.next();
+
+            result.add(cl.getCourseSession());
+        }
+
+        return result;
+
     }
 
 }
