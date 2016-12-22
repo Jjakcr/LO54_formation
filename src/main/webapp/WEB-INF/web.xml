@@ -16,6 +16,10 @@
         <servlet-name>Sub</servlet-name>
         <servlet-class>fr.utbm.servlet.Sub</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MyTraining</servlet-name>
+        <servlet-class>fr.utbm.servlet.MyTraining</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servlet</servlet-name>
         <url-pattern>/servlet/*</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>Sub</servlet-name>
         <url-pattern>/Sub</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MyTraining</servlet-name>
+        <url-pattern>/MyTraining</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

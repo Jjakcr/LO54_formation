@@ -16,7 +16,14 @@
 <%@include file="htmlTemplates/header.html"%>
 
 <body>
-    <h1><font color="blue"><u>All training sessions</u></font></h1>
+    <button type="button"  class="btn btn-info pull-right" data-toggle="modal" data-target="#myTraining">
+            My training
+        </button>
+    <div >
+        <h1><font color="blue"><u>All training sessions</u></font></h1>
+      
+        
+    </div>
     <div class="table-responsive">
 
 
@@ -36,9 +43,9 @@
                     Votre inscrition est faite 
 
                 </c:when>    
-               
+
                 <c:otherwise>
-                    
+
                     Vous êtes déjà inscrit
 
 
@@ -47,7 +54,7 @@
 
         </div>
 
-        
+
         <table class="table table-striped table-hover">
             <thead>
 
@@ -195,6 +202,32 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Subcribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myTraining" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <form class="form-horizontal" method="post" action="MyTraining">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="emailT">Email:</label>
+                            <div class="col-sm-10">
+                                <input type="email" value="${emailSession}" name="emailT" class="form-control" id="emailT" placeholder="Enter email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Done</button>
                     </div>
                 </form>
             </div>

@@ -8,7 +8,6 @@ package fr.utbm.formation.core.repository;
 import fr.utbm.formation.core.entity.Course;
 import fr.utbm.formation.core.entity.CourseSession;
 import fr.utbm.formation.core.tools.HibernateUtil;
-import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;

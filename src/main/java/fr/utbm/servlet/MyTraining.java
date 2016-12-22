@@ -5,10 +5,10 @@
  */
 package fr.utbm.servlet;
 
-import fr.utbm.formation.core.repository.ClientDAO;
 import fr.utbm.formation.core.service.ServiceFormation;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jean- Jacques
  */
-public class Sub extends HttpServlet {
+public class MyTraining extends HttpServlet {
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,27 +33,16 @@ public class Sub extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ServiceFormation service = (ServiceFormation) request.getSession().getAttribute("service");
-        String firstname = request.getParameter("firstName");
-        String lastname = request.getParameter("lastName");
-        String add = request.getParameter("address");
-        String phone = request.getParameter("phone");
-        String mail = request.getParameter("email");
+        ServiceFormation service= (ServiceFormation) request.getSession().getAttribute("service");
+        String email = request.getParameter("emailT");
         
-        String id = request.getParameter("idSess");
-        boolean inscritOK =service.subscribe(lastname, firstname, add, phone, mail, id);
-        request.getSession().setAttribute("emailSession", mail);
-        String typeAl = "warning";
-        if (inscritOK){
-            typeAl = "success";
-        }
-        request.setAttribute("inscritOK", inscritOK);
-        request.setAttribute("typeAl",typeAl);
-        
-
+        List result = service.getMyFormations(email);
+        request.getSession().setAttribute("result",result);
+       
         this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
         try (PrintWriter out = response.getWriter()) {
-
+            /* TODO output your page here. You may use following sample code. */
+      
         }
     }
 
