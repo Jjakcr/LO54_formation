@@ -8,7 +8,6 @@ package fr.utbm.formation.core.tools;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
-import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -28,6 +27,7 @@ public class JasperUtil {
 
         JRBeanCollectionDataSource myBean = new JRBeanCollectionDataSource(list, false);
         try {
+            //changer le répertoire qd on change de serveur
             String x = JasperCompileManager.compileReportToFile("D:\\netbeanLO54\\Data\\NetBeansProjects\\lo54\\reports\\report1.jrxml");
             jasperPrint = JasperFillManager.fillReport(x, new HashMap(), myBean);
             //JasperViewer jasperViewer = new JasperViewer(jasperPrint,false);

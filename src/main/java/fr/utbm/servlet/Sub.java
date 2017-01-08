@@ -5,7 +5,6 @@
  */
 package fr.utbm.servlet;
 
-import fr.utbm.formation.core.repository.ClientDAO;
 import fr.utbm.formation.core.service.ServiceFormation;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,17 +37,16 @@ public class Sub extends HttpServlet {
         String add = request.getParameter("address");
         String phone = request.getParameter("phone");
         String mail = request.getParameter("email");
-        
+
         String id = request.getParameter("idSess");
-        boolean inscritOK =service.subscribe(lastname, firstname, add, phone, mail, id);
+        boolean inscritOK = service.subscribe(lastname, firstname, add, phone, mail, id);
         request.getSession().setAttribute("emailSession", mail);
         String typeAl = "warning";
-        if (inscritOK){
+        if (inscritOK) {
             typeAl = "success";
         }
         request.setAttribute("inscritOK", inscritOK);
-        request.setAttribute("typeAl",typeAl);
-        
+        request.setAttribute("typeAl", typeAl);
 
         this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
         try (PrintWriter out = response.getWriter()) {

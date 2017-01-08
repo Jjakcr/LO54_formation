@@ -62,7 +62,7 @@ public class ClientDAO {
     public List getFormation(String email) {
         List<CourseSession> result = new LinkedList();
         Criteria crit = session.createCriteria(Client.class);
-        crit.setMaxResults(10);
+        //crit.setMaxResults(10); partie de la mise en place des bouton next et prev 
         crit.add(Restrictions.eq("email", email));
         List<Client> preresult = crit.list();
         for (Iterator iterator = preresult.iterator(); iterator.hasNext();) {

@@ -17,12 +17,12 @@
 
 <body>
     <button type="button"  class="btn btn-info pull-right" data-toggle="modal" data-target="#myTraining">
-            My training
-        </button>
+        My training
+    </button>
     <div >
         <h1><font color="blue"><u>All training sessions</u></font></h1>
-      
-        
+
+
     </div>
     <div class="table-responsive">
 

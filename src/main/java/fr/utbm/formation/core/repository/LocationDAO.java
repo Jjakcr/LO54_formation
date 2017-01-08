@@ -21,7 +21,7 @@ import org.hibernate.criterion.Restrictions;
  * @author Jean- Jacques
  */
 public class LocationDAO {
-    
+
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction tx = null;
 
@@ -42,32 +42,32 @@ public class LocationDAO {
             session.close();
         }
     }
-    
-     public boolean isExist(int crit){
-        String hql = "FROM Location where ID="+crit;
+
+    public boolean isExist(int crit) {
+        String hql = "FROM Location where ID=" + crit;
         Query query = session.createQuery(hql); //methode HQL
-        List result= query.list();
+        List result = query.list();
         return !result.isEmpty();
     }
-     
-    public List searchLocation( String loc){
+
+    public List searchLocation(String loc) {
         Criteria crit = session.createCriteria(CourseSession.class);
-        crit.setMaxResults(10);
+        //crit.setMaxResults(10); pour mise en place next, prev
         crit.createAlias("location", "Loc");
 
         crit.add(Restrictions.eq("Loc.city", loc));
-        List <CourseSession> result = crit.list();
+        List<CourseSession> result = crit.list();
         return result;
-     }
-    
-    public List getAllLocation(){
-         List <Location> result = null;
-          try {
+    }
+
+    public List getAllLocation() {
+        List<Location> result = null;
+        try {
             tx = session.beginTransaction();
             String hql = "FROM Location";
             Query query = session.createQuery(hql); //methode HQL
             result = query.list();
-        
+
             tx.commit();
             //return result; 
         } catch (HibernateException e) {
@@ -78,6 +78,6 @@ public class LocationDAO {
         } finally {
             session.close();
         }
-        return result; 
+        return result;
     }
 }

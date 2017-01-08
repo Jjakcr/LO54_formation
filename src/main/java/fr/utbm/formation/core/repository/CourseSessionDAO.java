@@ -26,16 +26,15 @@ public class CourseSessionDAO {
     Transaction tx = null;
 
     public boolean isExist(int crit) {
-        String hql = "FROM CourseSession where idSession="+crit;
+        String hql = "FROM CourseSession where idSession=" + crit;
         Query query = session.createQuery(hql); //methode HQL
-        List result= query.list();
+        List result = query.list();
         return !result.isEmpty();
-        
+
     }
 
     public void addCourseSession(CourseSession cs) {
-        
-        
+
         try {
 
             tx = session.beginTransaction();
@@ -54,24 +53,24 @@ public class CourseSessionDAO {
 
     public List searchCourseSession(Date filterDate) {
         //requète par critère
-        
+
         Criteria crit = session.createCriteria(CourseSession.class);
         crit.setMaxResults(10);
         crit.add(Restrictions.eq("startDate", filterDate));
-        List <CourseSession> result = crit.list();
+        List<CourseSession> result = crit.list();
         return result;
 
     }
-    
+
     public List getAllCourseSession() {
-        
-            List <CourseSession> result = null;
-          try {
+
+        List<CourseSession> result = null;
+        try {
             tx = session.beginTransaction();
             String hql = "FROM CourseSession";
             Query query = session.createQuery(hql); //methode HQL
             result = query.list();
-        
+
             tx.commit();
             //return result; 
         } catch (HibernateException e) {
@@ -82,20 +81,20 @@ public class CourseSessionDAO {
         } finally {
             session.close();
         }
-        return result; 
+        return result;
     }
-    
+
     public CourseSession getCourseSessionById(String idSession) {
-        
-            CourseSession result = null;
-          try {
+
+        CourseSession result = null;
+        try {
             tx = session.beginTransaction();
-            String hql = "FROM CourseSession where idSession =" +idSession;
+            String hql = "FROM CourseSession where idSession =" + idSession;
             Query query = session.createQuery(hql); //methode HQL
             result = (CourseSession) query.uniqueResult();
-        
+
             tx.commit();
-          
+
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
@@ -104,7 +103,7 @@ public class CourseSessionDAO {
         } finally {
             session.close();
         }
-        return result; 
+        return result;
     }
-    
+
 }

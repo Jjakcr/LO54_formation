@@ -38,7 +38,7 @@ public class RequestPdf extends HttpServlet {
             new JasperUtil(result, response.getOutputStream());
 
         }
-        this.getServletContext().getRequestDispatcher("/outPdf.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/outPdf.jsp");
 
     }
 

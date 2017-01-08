@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author Jean- Jacques
  */
 public class MyTraining extends HttpServlet {
-    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +32,16 @@ public class MyTraining extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ServiceFormation service= (ServiceFormation) request.getSession().getAttribute("service");
+        ServiceFormation service = (ServiceFormation) request.getSession().getAttribute("service");
         String email = request.getParameter("emailT");
-        
+
         List result = service.getMyFormations(email);
-        request.getSession().setAttribute("result",result);
-       
+        request.getSession().setAttribute("result", result);
+
         this.getServletContext().getRequestDispatcher("/homePage.jsp").forward(request, response);
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-      
+
         }
     }
 

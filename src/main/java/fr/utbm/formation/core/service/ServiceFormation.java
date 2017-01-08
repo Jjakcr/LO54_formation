@@ -96,7 +96,7 @@ public class ServiceFormation {
         LocationDAO loc = new LocationDAO();
         return loc.getAllLocation();
     }
-    
+
     public boolean subscribe(String lastname, String firstname, String address, String phone, String email, String idSession) {
         Client cl = new Client(lastname, firstname, address, phone, email);
         CourseSessionDAO getCsS = new CourseSessionDAO();
@@ -104,8 +104,8 @@ public class ServiceFormation {
         ClientDAO clD = new ClientDAO();
         return clD.addClient(cl);
     }
-    
-    public List getMyFormations(String email){
+
+    public List getMyFormations(String email) {
         ClientDAO clD = new ClientDAO();
         return clD.getFormation(email);
     }

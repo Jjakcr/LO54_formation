@@ -43,19 +43,19 @@ public class CourseDAO {
         }
         System.out.print("Formation Crée");
     }
-    
-    public boolean isExist(String crit){
-       String hql = "FROM Course where CODE='"+crit+"'";
+
+    public boolean isExist(String crit) {
+        String hql = "FROM Course where CODE='" + crit + "'";
         Query query = session.createQuery(hql); //methode HQL
-        List result= query.list();
+        List result = query.list();
         return !result.isEmpty();
     }
 
     public List searchCourse(String filtre) {
-        List <Course> result =null;
+        List<Course> result = null;
         try {
             tx = session.beginTransaction();
-            String hql = "FROM Course where TITLE LIKE '%" + filtre + "%'";
+            String hql = "FROM Course where lower(TITLE) LIKE lower('%" + filtre + "%')";
             Query query = session.createQuery(hql); //methode HQL
             result = query.list();
             tx.commit();
@@ -69,24 +69,24 @@ public class CourseDAO {
         }
         return result;
     }
-    
-    public List searchCourseCS(String filtre){
-         Criteria crit = session.createCriteria(CourseSession.class);
-         crit.createAlias("course", "Crs");
-        crit.add(Restrictions.like("Crs.title", "%"+filtre+"%"));
-        List <CourseSession> result = crit.list();
+
+    public List searchCourseCS(String filtre) {
+        Criteria crit = session.createCriteria(CourseSession.class);
+        crit.createAlias("course", "Crs");
+        crit.add(Restrictions.like("Crs.title", "%" + filtre + "%").ignoreCase());
+        List<CourseSession> result = crit.list();
         return result;
     }
-    
+
     public List getAllCourse() {
-        
-            List <Course> result = null;
-          try {
+
+        List<Course> result = null;
+        try {
             tx = session.beginTransaction();
             String hql = "FROM Course";
             Query query = session.createQuery(hql); //methode HQL
             result = query.list();
-        
+
             tx.commit();
             //return result; 
         } catch (HibernateException e) {
@@ -97,8 +97,7 @@ public class CourseDAO {
         } finally {
             session.close();
         }
-        return result; 
+        return result;
     }
-
 
 }
